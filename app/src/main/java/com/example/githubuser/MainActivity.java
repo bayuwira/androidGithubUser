@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.res.TypedArray;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public ArrayList<User> getListUser(){
-        int[] dataAvatar = getResources().getIntArray(R.array.avatar);
+        TypedArray dataAvatar = getResources().obtainTypedArray(R.array.avatar);
         String[] dataUsername = getResources().getStringArray(R.array.username);
         String[] dataName = getResources().getStringArray(R.array.name);
         String[] dataCompany = getResources().getStringArray(R.array.company);
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<User>listUser = new ArrayList<>();
         for (int i = 0; i < dataUsername.length; i++){
             User user = new User();
-            user.setAvatar(dataAvatar[i]);
+            user.setAvatar(dataAvatar.getResourceId(i, -1));
             user.setUsername(dataUsername[i]);
             user.setName(dataName[i]);
             user.setCompany(dataCompany[i]);

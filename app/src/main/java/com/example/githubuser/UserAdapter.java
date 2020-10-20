@@ -36,10 +36,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public void onBindViewHolder(@NonNull final UserViewHolder holder, int position) {
         final User user = listUser.get(position);
 
-        Glide.with(holder.itemView.getContext())
-                .load(user.getAvatar())
-                .apply(new RequestOptions().override(50,50))
-                .into(holder.userAvatar);
+//        Glide.with(holder.itemView.getContext())
+//                .load(user.getAvatar())
+//                .apply(new RequestOptions().override(50,50))
+//                .into(holder.userAvatar);
+
+        holder.userAvatar.setImageResource(user.getAvatar());
+
         holder.userUsername.setText(user.getUsername());
         holder.userName.setText(user.getName());
         holder.userCompany.setText(user.getCompany());
@@ -51,6 +54,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
+
         public ImageView userAvatar;
         public TextView userUsername, userName, userCompany;
 
